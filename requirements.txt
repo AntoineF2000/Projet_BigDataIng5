@@ -1,0 +1,6 @@
+# PySpark is NOT listed: the Onyxia image inseefrlab/onyxia-vscode-pyspark:py3.13.15-spark4.1.1
+# ships Spark 4.1.1 configured for Kubernetes executors and S3; reinstalling it would break that setup.
+duckdb>=1.1,<2
+pandas>=2.0
+pyarrow>=14
+pytest>=8
