@@ -1,6 +1,6 @@
 # OpenFlights hub analysis — Big Data Ecosystem II
 
-**Authors:** FERRER Antoine · AIFOUTE Othmane
+**Authors:** FERRER Antoine - AIFOUTE Othmane
 
 **Prerequisites:** Onyxia account (namespace `user-a-ferrer-ece`) and a `vscode-pyspark` service; it ships Python 3, Spark, `mc` with the `s3` alias, and S3 credentials as environment variables. Run `pip install -r requirements.txt` to add DuckDB and pytest.
 
