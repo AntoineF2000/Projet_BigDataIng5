@@ -1,4 +1,4 @@
-# OpenFlights hub analysis — Big Data Ecosystem II
+# OpenFlights hub analysis - Big Data Ecosystem II
 
 **Authors:** FERRER Antoine - AIFOUTE Othmane
 
