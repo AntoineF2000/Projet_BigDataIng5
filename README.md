@@ -6,7 +6,7 @@
 
 **Dataset:** OpenFlights Airports/Airlines/Routes/Countries. Source: <https://github.com/jpatokal/openflights> (data from <https://openflights.org/data.php>), pinned to commit `cd163fa`. License: ODbL 1.0. Downloaded on 2026-11-16. Size: 3.91 MB in 4 files (`routes.dat` 67,663 rows, `airports.dat` 7,698, `airlines.dat` 6,162, `countries.dat` 261).
 
-**Problem statement:** Which airports are the most connected hubs of the world air network, measured by the number of distinct direct destinations? How dependent is each country on international links? The pipeline outputs a full hub ranking and a per-country connectivity table. The top-10 ranking is independently recomputed with DuckDB from the raw files.
+**Problem statement:** Which airports are the most connected hubs of the world air network, measured by their number of distinct direct destinations, and how dependent is each country on international links? The pipeline produces a full hub ranking and a per-country connectivity table from the raw OpenFlights files. The top-10 ranking is independently recomputed with DuckDB from the raw data to verify the result.
 
 **S3 paths** (bucket `user-a-ferrer-ece`, prefix `bigdata_project/`):
 
