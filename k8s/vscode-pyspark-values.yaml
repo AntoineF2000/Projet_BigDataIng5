@@ -1,0 +1,39 @@
+# Helm values used to launch the Onyxia service that runs the pipeline.
+# Equivalent command (secrets are injected by Onyxia and deliberately omitted):
+#   helm repo add ide https://inseefrlab.github.io/helm-charts-interactive-services
+#   helm install vscode-pyspark-582689 ide/vscode-pyspark --version 3.2.7 \
+#        --namespace user-a-ferrer-ece -f k8s/vscode-pyspark-values.yaml
+#
+# Why these resources: the namespace quota (kubectl get quota) is
+#   requests.memory 200Mi, requests.cpu 200m, limits.memory 4Gi, limits.cpu 4.
+# The chart default (requests 200m/400Mi) is rejected by the quota
+# ("exceeded quota: onyxia-quota"), so requests were lowered to 100m/200Mi and
+# the memory limit raised to 3600Mi so the Spark driver fits in the pod.
+# The same quota makes Spark executor pods impossible (each executor requests
+# >= 896Mi = 512m heap + 384Mi overhead > 200Mi), hence Spark runs in local mode
+# inside this pod (see report, section "Choix techniques").
+service:
+  image:
+    version: inseefrlab/onyxia-vscode-pyspark:py3.13.15-spark4.1.1
+spark:
+  default: true
+  ui: true
+  userConfig:
+    spark.driver.memory: 1g
+resources:
+  requests:
+    cpu: 100m
+    memory: 200Mi
+  limits:
+    cpu: 2000m
+    memory: 3600Mi
+persistence:
+  enabled: true
+  size: 10Gi
+kubernetes:
+  enabled: true
+  role: admin
+s3:
+  enabled: true          # STS credentials injected by Onyxia at launch (12 h validity)
+  endpoint: s3.seaweedfs.adm.adaltas.cloud
+  pathStyleAccess: true
