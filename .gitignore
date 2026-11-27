@@ -1,0 +1,12 @@
+# Raw/processed data live on S3, never in Git
+data/
+*.parquet
+spark-warehouse/
+metastore_db/
+derby.log
+__pycache__/
+*.pyc
+.venv/
+.pytest_cache/
+.env
+*.log
